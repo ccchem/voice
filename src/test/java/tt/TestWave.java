@@ -1,7 +1,9 @@
 package tt;
 
 import java.io.File;
-import ek.util.sound.WaveReader;
+
+import ek.sound.wav.WaveFormat;
+import ek.sound.wav.WaveReader;
 
 
 public class TestWave
@@ -17,7 +19,13 @@ public class TestWave
         File file = new File("/ws4/Jap/news/snow/snow2.wav");
         
         WaveReader rd = new WaveReader(file);
-        rd.printInfo();
+        WaveFormat format = rd.getFormat();
+        format.print();
+        
+        for(int i = 0; i < 10; i++)
+        {
+            System.out.println(rd.readShort() + ", " + rd.readShort());
+        }
         
         rd.close();
     }
